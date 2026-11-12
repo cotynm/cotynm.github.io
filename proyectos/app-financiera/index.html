@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diseño de app de gestión financiera · Coty</title>
+<meta name="description" content="Aplicación de escritorio para que directores de proyecto gestionen y proyecten su facturación.">
+<meta name="author" content="Constanza N. M.">
+<link rel="canonical" href="https://cotynm.github.io/proyectos/app-financiera/">
+<link rel="alternate" hreflang="es" href="https://cotynm.github.io/proyectos/app-financiera/">
+<link rel="alternate" hreflang="en" href="https://cotynm.github.io/en/projects/app-financiera/">
+<link rel="alternate" hreflang="x-default" href="https://cotynm.github.io/proyectos/app-financiera/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Diseño de app de gestión financiera · Coty">
+<meta property="og:description" content="Aplicación de escritorio para que directores de proyecto gestionen y proyecten su facturación.">
+<meta property="og:url" content="https://cotynm.github.io/proyectos/app-financiera/">
+<meta property="og:image" content="https://cotynm.github.io/assets/6de080a5baad2c8bedaa5a94c56ed143.jpg">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f7f5f2">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/poppins-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/solway-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+body{margin:0;background:#ffffff;font-family:"Poppins",system-ui,sans-serif;color:#44445a}
+a{color:#44445a}
+b,strong{font-weight:600}
+.wrap{max-width:1040px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+.narrow{max-width:none}
+.sep{border:0;margin:0 0 0 auto;width:66.666%;height:2px;border-radius:2px;background:var(--p-band)}
+.band{background:var(--p-band);color:var(--ink);text-align:center;padding:14px 16px;font:600 clamp(20px,2.2vw,26px)/1.2 var(--font-sans);letter-spacing:.04em;text-transform:uppercase;margin:0}
+.h2{margin:0;font:600 clamp(26px,2.8vw,30px)/1.25 var(--font-sans);color:var(--p-accent,var(--heading-accent-alt))}
+.h3{margin:0;font:700 20px/1.3 var(--font-display);color:var(--p-accent,var(--heading-accent-alt))}
+.p{margin:0;font-size:17px;line-height:27px}
+.list{margin:0;padding-left:20px;font-size:16px;line-height:25px;display:flex;flex-direction:column;gap:6px}
+.hl{margin:0 auto;max-width:720px;padding-top:24px;border-top:1px solid var(--aqua-300);text-align:center;font-size:19px;line-height:29px;color:var(--p-teal-text)}
+.tasks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:24px 16px;text-align:center}
+.tasks li{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:13px;line-height:18px;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+.tasks img{width:30px;height:30px}
+.chev{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px}
+.chev li{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start}
+.chev img{width:22px;height:22px;margin-top:2px}
+.chev b{display:block;font-size:17px;line-height:25px}
+.chev span{font-size:16px;line-height:25px}
+.shot{display:block;width:100%;height:auto;border-radius:var(--radius-md);background:var(--neutro-50)}
+.back{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:500;text-decoration:none;color:var(--ink)}
+.back:hover{text-decoration:underline;text-decoration-color:var(--brand);text-underline-offset:6px}
+.back img{width:20px;height:20px}
+.next{display:flex;flex-direction:column;gap:12px;text-decoration:none;color:var(--ink)}
+.next:hover .next-title{text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:2px;text-underline-offset:6px}
+.next-label{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted)}
+.next-title{font:600 22px/30px var(--font-sans);display:inline-flex;align-items:center;gap:10px}
+.foot a{color:var(--ink);text-decoration:none}
+.foot a:hover{text-decoration:underline;text-underline-offset:4px}
+.foot-icons a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;transition:background-color .2s ease}
+.foot-icons a:hover{background:var(--aqua-100)}
+.foot-icons img{width:22px;height:22px}
+.vd-grid{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:16px;align-items:start}
+.vd-col{display:flex;flex-direction:column;gap:16px}
+.to-top{position:fixed;right:24px;bottom:24px;z-index:20;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--surface-raised);display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow-hover);transition:transform .2s ease}
+.to-top:hover{transform:translateY(-2px)}
+.to-top img{width:22px;height:22px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:40px 56px;align-items:center}
+@media (max-width: 900px){.hero{grid-template-columns:1fr}}
+.product{background:linear-gradient(90deg,#b0c5c0,#849e96)}
+.product img{display:block;width:min(100%,1376px);height:auto;margin:0 auto;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
+.more{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;border-top:1px solid var(--aqua-300);border-bottom:1px solid var(--aqua-300)}
+.more-col{padding:24px 0}
+.more-right{align-items:flex-end;text-align:right}
+@media (max-width: 720px){.more{grid-template-columns:1fr}.more-col+.more-col{border-top:1px solid var(--aqua-300)}.more-right{align-items:flex-start;text-align:left}}
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:32px 48px;align-items:center}
+@media (max-width: 720px){.vd-grid{grid-template-columns:1fr 1fr}.vd-col{grid-column:1 / -1}}
+.full{display:block;width:100%;height:auto}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}
+.gal img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md)}
+.logos{display:flex;flex-direction:column;align-items:flex-start;gap:28px}
+.blk{padding:56px 0}
+.blk .p,.blk .list{color:inherit}
+.over{position:relative}
+.over img{display:block;width:100%;height:auto}
+.over-box{position:absolute;right:0;bottom:0;max-width:560px;padding:32px 36px;background:var(--lila-400);color:#fff;font-size:18px;line-height:28px}
+@media (max-width: 900px){.over-box{position:static;max-width:none}}
+.video{display:block;width:100%;height:auto;border-radius:var(--radius-md);background:#eef0f3;box-shadow:0 1px 3px rgba(68,68,90,.12)}
+.reply{margin:8px 0 0;font-size:16px;line-height:25px;color:var(--p-teal-text)}
+.gal-c{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:24px;align-items:center}
+.gal-c img{display:block;width:100%;height:auto}
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin:0;padding:0;list-style:none}
+.chips li{padding:8px 16px;border:1.5px solid var(--p-accent);border-radius:999px;font-size:15px;line-height:22px;font-weight:500}
+.nbox{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px}
+.nbox p{margin:0;padding:20px 24px;border:1.5px solid var(--p-accent);border-radius:var(--radius-md);font-size:16px;line-height:25px}
+.nbox b.n{font:700 24px/1 var(--font-sans);color:var(--p-accent);margin-right:6px}
+.proc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:32px 40px}
+.proc h4{display:flex;align-items:center;gap:12px;margin:0 0 12px;font:600 15px/1.3 var(--font-sans);letter-spacing:.06em;text-transform:uppercase}
+.proc h4 img{width:32px;height:32px}
+.proc ul{margin:0;padding-left:18px;font-size:16px;line-height:25px;display:flex;flex-direction:column;gap:4px}
+.quote{margin:0;font:700 clamp(22px,2.4vw,26px)/1.35 var(--font-display);color:var(--p-accent)}
+.tbl{width:100%;border-collapse:collapse;font-size:14px;line-height:20px}
+.tbl th{background:var(--p-accent);color:#fff;font-weight:600;text-align:left;padding:10px 12px}
+.tbl td{padding:10px 12px;border-bottom:1px solid var(--line)}
+.tbl-wrap{overflow-x:auto}
+.credits{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:24px 40px}
+.credits h4{margin:0 0 8px;font:600 13px/1.3 var(--font-sans);letter-spacing:.08em;text-transform:uppercase}
+.credits p{margin:0;font-size:16px;line-height:25px}
+.split-12{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}
+@media (max-width: 900px){.split-12{grid-template-columns:1fr}.split-12 .logo-card{order:2}}
+.onbg{padding:48px clamp(16px,4vw,32px)}
+.onbg .stack{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:32px}
+.onbg img{display:block;width:100%;height:auto}
+</style>
+</head>
+<body>
+<div style="--p-band: #a8e3e8; --p-accent: #2b7c7a; --p-teal-text: #2b7c7a; min-height: 100vh; background: var(--surface-raised); color: var(--ink); font-family: var(--font-sans);">
+
+  <div style="position: sticky; top: 0px; z-index: 10; background: rgba(247, 245, 242, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);">
+    <div style="max-width: 1184px; margin: 0px auto;">
+      <div style="display: contents;"><header class="cy-nav"><a class="cy-nav-brand" href="/" aria-label="Coty, inicio"><img src="/assets/d956a0a1e15cbf5e112170773c9f7224.svg" alt=""></a><nav class="cy-nav-links" aria-label="Principal"><a href="/" data-label="Proyectos" class="cy-nav-link">Proyectos</a><a href="/#sobre-mi" data-label="Sobre mí" class="cy-nav-link">Sobre mí</a><a href="/#contacto" data-label="Contacto" class="cy-nav-link">Contacto</a></nav><div class="cy-nav-right"><a class="cy-btn cy-btn-primary cy-nav-cta" href="/#contacto"><span>¿Conversamos?</span></a><div class="cy-lang" role="group" aria-label="Idioma"><a href="/proyectos/app-financiera/" lang="es" class="cy-lang-opt is-on" aria-current="true">ES</a><a href="/en/projects/app-financiera/" lang="en" class="cy-lang-opt">EN</a></div><button type="button" class="cy-nav-burger" aria-expanded="false" aria-controls="cy-nav-panel" aria-label="Abrir menú"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 7L7 7M20 7L11 7"></path><path d="M20 17H17M4 17L13 17"></path><path d="M4 12H7L20 12"></path></svg></button></div><div id="cy-nav-panel" class="cy-nav-panel" hidden=""><nav aria-label="Principal"><a href="/" data-label="Proyectos" class="cy-nav-panel-link">Proyectos</a><a href="/#sobre-mi" data-label="Sobre mí" class="cy-nav-panel-link">Sobre mí</a><a href="/#contacto" data-label="Contacto" class="cy-nav-panel-link">Contacto</a></nav><a class="cy-btn cy-btn-primary" href="/#contacto"><span>¿Conversamos?</span></a></div></header></div>
+    </div>
+  </div>
+
+  <header style="background-color: var(--crema); background-image: linear-gradient(rgb(243, 234, 218) 1px, transparent 1px), linear-gradient(90deg, rgb(243, 234, 218) 1px, transparent 1px); background-size: 48px 48px; padding: 28px 0px 48px;">
+    <div class="wrap" style="max-width: 1184px; display: flex; flex-direction: column; gap: 24px;">
+      <a class="back" href="/"><img src="/assets/310dd7ece495d98919bf1c873b80829d.svg" alt="">Volver a proyectos</a>
+      <div class="hero">
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <span style="display: flex;"><div style="display: contents;"><span class="cy-tag cy-tag-ux">UX/UI</span></div></span>
+          <h1 style="margin: 0px; font-family: var(--font-display); font-weight: 700; font-size: clamp(34px, 4vw, 48px); line-height: 1.1; color: var(--p-accent);">Diseño de app de gestión financiera</h1>
+          <p style="margin: 0px; font-size: clamp(17px, 1.6vw, 19px); line-height: 1.55;">Desarrollo de una aplicación de escritorio para uso interno de directores de proyecto.</p>
+          <dl style="margin: 8px 0px 0px; display: flex; flex-wrap: wrap; gap: 12px 36px; font-size: 15px; line-height: 22px;">
+            <div><dt style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);">Rol</dt><dd style="margin: 0px; font-weight: 500;">Diseñadora UX/UI</dd></div>
+            <div><dt style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);">USA</dt><dd style="margin: 0px; font-weight: 500;">2024</dd></div>
+            <div><dt style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);">Personas usuarias</dt><dd style="margin: 0px; font-weight: 500;">Directores de proyecto</dd></div>
+          </dl>
+        </div>
+        <img src="/assets/6de080a5baad2c8bedaa5a94c56ed143.jpg" alt="Notebook con el listado de proyectos de la app, sobre un fondo de cifras y planillas desordenadas" style="display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: var(--radius-lg);">
+      </div>
+    </div>
+  </header>
+
+  <h2 class="band">El proyecto</h2>
+
+  <section class="wrap" style="padding: 56px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 44px;">
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <h3 class="h2">Contexto</h3>
+      <p class="p">En la empresa, sus directores <b>gestionaban ciertos aspectos de los proyectos a través de una planilla Excel</b>, la cual fueron escalando a medida que necesitaban más funcionalidades. Si bien ya estaban habituados a trabajar con la planilla, había adquirido tal complejidad que ciertos procedimientos resultaban <b>tediosos, forzados o poco ágiles</b>. Además, el proceso de aprendizaje para las personas que se incorporaban al puesto se volvió muy complejo.</p>
+    </div>
+
+    <hr class="sep">
+
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <h3 class="h2">Objetivos</h3>
+      <div class="split" style="align-items: start;">
+        <div style="display: flex; flex-direction: column; gap: 16px;"><h4 class="h3">UX</h4><p class="p">Proporcionar a directores/as de proyecto una <b>mejor experiencia</b> al gestionar sus proyectos, puliendo procesos y desarrollando una <b>herramienta ágil y pertinente</b>.</p></div>
+        <div style="display: flex; flex-direction: column; gap: 16px;"><h4 class="h3">UI</h4><p class="p">Desarrollar una aplicación de escritorio para que directores de proyecto puedan <b>visualizar, analizar y predecir facturación y balances financieros de sus proyectos</b>.</p></div>
+      </div>
+    </div>
+
+    <hr class="sep">
+
+    <div class="split" style="align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <h3 class="h2">Desafíos</h3>
+        <ul class="chev">
+          <li><img src="/assets/c45494a2f00c513880fe5bc5c4052561.svg" alt=""><div><span><b style="display: inline; font-size: inherit;">No existía documentación previa</b> de flujos, procedimientos, procesos, etc. Solo contábamos con una planilla de Excel sumamente compleja, y la experiencia de los mismos usuarios.</span></div></li>
+          <li><img src="/assets/c45494a2f00c513880fe5bc5c4052561.svg" alt=""><div><span>El producto requeriría <b style="display: inline; font-size: inherit;">integraciones</b> con otras aplicaciones de gestión: recursos humanos, facturación, estimaciones.</span></div></li>
+          <li><img src="/assets/c45494a2f00c513880fe5bc5c4052561.svg" alt=""><div><span>Los <b style="display: inline; font-size: inherit;">procesos no estaban estandarizados</b>: no todos los usuarios realizaban los mismos procedimientos para cada tarea, por lo cual fue necesario unificar criterios.</span></div></li>
+        </ul>
+      </div>
+      <img class="shot" src="/assets/5189a8b620efc9425fba600ec8a0d484.jpg" alt="Planilla de Excel que se usaba antes de la app" style="max-width: 420px; justify-self: center; box-shadow: rgba(68, 68, 90, 0.15) 0px 1px 3px;">
+    </div>
+
+    <hr class="sep">
+
+    <div style="display: flex; flex-direction: column; gap: 32px;">
+      <h3 class="h2">Tareas y responsabilidades</h3>
+      <ul class="tasks">
+        <li><img src="/assets/76aa78931beddfcea3fd65ccd066237b.svg" alt="">Relevamiento de<br>requerimientos</li>
+        <li><img src="/assets/506c2737b85ee1e86aba123644c45060.svg" alt="">Arquitectura y<br>flujos de usuario</li>
+        <li><img src="/assets/b6567490db4c01d89164b98f67ad8741.svg" alt="">UX Writing</li>
+        <li><img src="/assets/1860af99e6ea644a619711db7aac4a3e.svg" alt="">Diseño UI<br>Wireframes<br>Prototipos</li>
+        <li><img src="/assets/1249cddf1c2dcace9f51baf6b5334908.svg" alt="">Diseño visual<br>Entregables</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="blk" style="background: rgb(43, 124, 122); color: rgb(255, 255, 255);">
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 20px;">
+      <h3 style="margin: 0px; font: 600 clamp(26px, 2.8vw, 30px)/1.25 var(--font-sans);">Características y funcionalidades</h3>
+      <h4 style="margin: 0px; font: 700 20px/1.3 var(--font-display);">¿Qué necesitan resolver las personas usuarias?</h4>
+      <div class="split" style="align-items: start; gap: 6px 48px;">
+        <ul class="list"><li>Consultar los status de facturación.</li><li>Visualizar totales.</li><li>Conocer y comparar cierres mensuales y cuatrimestrales.</li><li>Cargar y consultar progresos.</li><li>Enviar reportes a clientes.</li></ul>
+        <ul class="list"><li>Evaluar resultados por etapa, por mes y por cuatrimestre.</li><li>Editar cifras para poder realizar predicciones a futuro y proyectar.</li><li>Conocer la incidencia de costos por período, etc.</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <h2 class="band">El proceso</h2>
+
+  <section class="wrap" style="padding: 56px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 44px;">
+    <div class="split" style="align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <h3 class="h2">Wireframes</h3>
+        <p class="p">Fue necesario desarrollar <b>wireframes en baja</b> para poder <b>testear</b> las diferentes <b>pantallas y los flujos propuestos con las personas usuarias</b>.</p>
+        <p class="p">En las instancias de presentación también fuimos <b>receptando nuevos requerimientos de funcionalidades y sugerencias</b>.</p>
+        <p class="p">También identificamos algunos <b>puntos de dolor</b>, tanto en procesos como en procedimientos de manipulación de datos, para tomar en cuenta en las próximas etapas.</p>
+      </div>
+      <img src="/assets/97675ee42deb34556e26de83fd421b31.png" alt="Tablet con un wireframe de la pantalla de proyecto" style="display: block; width: 100%; max-width: 520px; height: auto; justify-self: center;">
+    </div>
+    <p class="hl">Uno de los puntos críticos a resolver fue que las personas usuarias deseaban poder <b>editar todos los valores a discreción</b>. Si bien en la planilla que utilizaban existía esta posibilidad, <b>se decidió restringirla según ciertos criterios acordados</b>. De esta manera, aseguramos que la herramienta muestre valores reales, que no se ensucien los procesos y que los balances sean comprensibles y transparentes para el cliente y para el equipo.</p>
+
+    <hr class="sep">
+
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <h3 class="h2">Arquitectura, flujos y requerimientos</h3>
+      <div class="gal-c">
+        <img src="/assets/743c4dafd5542e484521ecd5b48c333a.jpg" alt="Flujo de ingreso, integraciones y roles de usuario">
+        <img src="/assets/578869e0ae0437652e3ee3480a01e404.jpg" alt="User flow general de la Financial App">
+      </div>
+    </div>
+  </section>
+
+  <section class="blk" style="background: rgb(43, 124, 122); color: rgb(255, 255, 255);">
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 16px;">
+      <p class="p">Conjuntamente se comenzaron a diseñar los componentes y los frames finales, <b>se fue realizando un trabajo intenso</b> por parte de los project managers para <b>validar, estandarizar y unificar procesos</b> junto con las personas usuarias.</p>
+      <p class="p">A su vez, el <b>equipo de desarrollo</b> comenzó a <b>relevar las necesidades de integración</b> con otras plataformas y planificar el desarrollo.</p>
+    </div>
+  </section>
+
+  <h2 class="band">Diseño visual</h2>
+
+  <section class="wrap" style="padding: 56px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 44px;">
+    <p class="p">Al no haber disponible un Design System, tomé como base el brandbook de la empresa. Si bien es completo y versátil, no contempla elementos visuales ni estilos pensados específicamente para productos digitales, por lo cual tuve que definir nuevas tipografías, paletas de color y componentes.</p>
+    <div class="split" style="align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <h3 class="h2">Tipografía y paleta de color</h3>
+        <p class="p">La definición de colores y tipografías asegura el <b>cumplimiento de los estándares de accesibilidad</b> en cuanto a contrastes, tamaños, espaciados, etc.</p>
+      </div>
+      <img src="/assets/4c6eb2eba1c64c7cb9481e3c0bc29d78.png" alt="Tipografía Open Sans y escala de títulos" style="display: block; width: 100%; max-width: 460px; height: auto; justify-self: center;">
+    </div>
+    <img src="/assets/e56abc8ca9fb9450124379e0ac25a654.jpg" alt="Paleta: colores primarios, degradés, alertas, neutros y suaves" style="display: block; width: 100%; height: auto;">
+
+    <hr class="sep">
+
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <h3 class="h2">Sistema de color y componentes</h3>
+      <img src="/assets/6deade4ab8b32e743aa52c4222fc30a7.png" alt="Comportamientos de íconos, tablas y botones" style="display: block; width: 100%; height: auto;">
+    </div>
+
+    <hr class="sep">
+
+    <div class="split" style="align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <h3 class="h2">Sistema de íconos</h3>
+        <p class="p">Al ser una herramienta de manipulación de datos y su ordenamiento en tablas y status, fue necesario <b>desarrollar una amplia paleta de colores y una biblioteca de íconos variada</b>.</p>
+        <p class="p">En la elección tipográfica prioricé <b>una fuente que se adapte mejor a la legibilidad de gran cantidad de datos en tablas extensas</b>.</p>
+      </div>
+      <img src="/assets/22bed619fdb568bb5477a3bfe926aa34.png" alt="Biblioteca de íconos de la app" style="display: block; width: 100%; max-width: 520px; height: auto; justify-self: center;">
+    </div>
+  </section>
+
+  <h2 class="band">Pantallas del MVP</h2>
+
+  <img class="full" src="/assets/e36dd6a2de958e670fb7c2e96e720be4.jpg" alt="Dashboard de la Financial App en un monitor de escritorio">
+  <div class="onbg" style="background: rgb(54, 185, 199);">
+    <div class="stack">
+      <img src="/assets/2aaa1dc0439c626acc48d2fd8a602b08.jpg" alt="Pantalla de listado de proyectos">
+      <img src="/assets/0d0c0d6b3b5bdf454a3ff9a4e4c7a1eb.jpg" alt="Pantalla de detalle de proyecto con forecast guardado">
+      <img src="/assets/e7ff9b21435acf1693b7ae5d07ebc751.jpg" alt="Pantalla de detalle mensual">
+      <img src="/assets/68b2108cea1ecd45eafcaf09455cea04.jpg" alt="Pantalla de equipo con alta de posición">
+      <img src="/assets/d13df9fccbf1be5d4f8f7e781cbb707a.jpg" alt="Pantalla de configuración de posiciones">
+    </div>
+  </div>
+
+  <h2 class="band">¿Qué aprendizajes me llevo?</h2>
+
+  <section class="wrap" style="padding: 48px clamp(16px, 4vw, 32px) 16px; display: flex; flex-direction: column; gap: 28px;">
+    <p class="p">Este fue un proyecto que implicaba cierta <b>complejidad, condicionamientos y desafíos</b>. Por un lado, para mí, como diseñadora UX/UI, pero también para el equipo de trabajo y para la empresa, que está recién comenzando a incorporar una perspectiva de diseño centrado en las personas en sus desarrollos de uso interno, como valor agregado a sus servicios.</p>
+    <ul class="chev">
+        <li><img src="/assets/c45494a2f00c513880fe5bc5c4052561.svg" alt=""><div><b>A veces es mejor no adelantarse con el diseño</b><span>Cuando los procesos no están claros, el ajuste lleva su tiempo y tiene sus idas y vueltas.</span></div></li>
+        <li><img src="/assets/c45494a2f00c513880fe5bc5c4052561.svg" alt=""><div><b>La importancia de ir documentando el proceso</b><span>Sirve tanto al equipo como a una misma.</span></div></li>
+        <li><img src="/assets/c45494a2f00c513880fe5bc5c4052561.svg" alt=""><div><b>Pivotear no es tiempo perdido</b><span>Cuando es en pos de mejorar el producto o sus flujos.</span></div></li>
+        <li><img src="/assets/c45494a2f00c513880fe5bc5c4052561.svg" alt=""><div><b>Ver datos en lugar de espacio en blanco</b><span>Amigarme con el hecho de que la mayoría de las personas prefiere ver datos o información en lugar de un espacio en blanco o descanso visual.</span></div></li>
+        <li><img src="/assets/c45494a2f00c513880fe5bc5c4052561.svg" alt=""><div><b>Simplicidad y coherencia</b><span>La visualización de gran cantidad de datos en una plataforma es un desafío hermoso que exige, más que nunca, atender al principio de simplicidad y a la coherencia de flujos y componentes.</span></div></li>
+        <li><img src="/assets/c45494a2f00c513880fe5bc5c4052561.svg" alt=""><div><b>Siempre diseñar para más de un tamaño de pantalla</b><span>Por más que no se exija un diseño responsivo.</span></div></li>
+      </ul>
+  </section>
+
+  <section class="wrap" style="padding: 56px clamp(16px, 4vw, 32px) 72px; display: flex; flex-direction: column; gap: 28px;">
+    <div class="more">
+      <a class="next more-col" href="/#proyectos-ux">
+        <span class="next-label">Explorar categoría</span>
+        <span class="next-title">Más proyectos de UX <img src="/assets/8a18d58b34c4387be95312a42466636d.svg" alt="" style="width: 22px; height: 22px;"></span>
+      </a>
+      <a class="next more-col more-right" href="/proyectos/unisona/">
+        <span class="next-label">Siguiente proyecto</span>
+        <span class="next-title">Caso UX completo: app para familias monoparentales <img src="/assets/8a18d58b34c4387be95312a42466636d.svg" alt="" style="width: 22px; height: 22px;"></span>
+      </a>
+    </div>
+    <a class="back" href="/"><img src="/assets/310dd7ece495d98919bf1c873b80829d.svg" alt="">Volver a proyectos</a>
+  </section>
+
+  <footer class="foot" style="background: var(--aqua-200); color: var(--ink);">
+    <div style="max-width: 1120px; margin: 0px auto; padding: 32px clamp(16px, 4vw, 32px) 24px; display: flex; flex-direction: column; gap: 20px;">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px;">
+        <span style="font-family: var(--font-display); font-weight: 700; font-size: 20px;">Coty</span>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px;">
+          <a href="mailto:cotynm@gmail.com" style="font-size: 15px; font-weight: 500;">cotynm@gmail.com</a>
+          <div class="foot-icons" style="display: flex; gap: 4px;">
+            <a href="https://www.linkedin.com/in/constanzanm" aria-label="LinkedIn"><img src="/assets/190fe421f25d34bc8f4c02457bd58c04.svg" alt=""></a>
+            <a href="https://www.behance.net/constanzanm" aria-label="Behance"><img src="/assets/23c5b3eb15b65601343f2817498bef10.svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-top: 16px; border-top: 1px solid rgba(68, 68, 90, 0.2); font-size: 13px; line-height: 20px;">
+        <span>© 2026 Constanza N. M.</span>
+        <span>Íconos: Solar Icons (CC BY 4.0) · Logos de herramientas: SVG Logos (CC0)</span>
+      </div>
+    </div>
+  </footer>
+
+  
+    <button type="button" class="to-top" aria-label="Volver arriba"><img src="/assets/8c48b3587322b681e98733e2e281100f.svg" alt=""></button>
+  </div>
+<script src="/js/site.js" defer></script>
+</body>
+</html>

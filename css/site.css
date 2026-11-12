@@ -1,0 +1,5 @@
+/* Ajustes del sitio publicado */
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+.to-top { transition: opacity .2s ease, visibility .2s ease, transform .2s ease; }
+.to-top:not(.is-visible) { opacity: 0; visibility: hidden; }

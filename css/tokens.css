@@ -1,0 +1,65 @@
+/* Coty Design System — variables de tokens.json para el canvas */
+@font-face { font-family: "Solway"; font-weight: 400; font-display: swap; src: url("/fonts/solway-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Solway"; font-weight: 500; font-display: swap; src: url("/fonts/solway-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Solway"; font-weight: 700; font-display: swap; src: url("/fonts/solway-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Poppins"; font-weight: 400; font-display: swap; src: url("/fonts/poppins-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Poppins"; font-weight: 500; font-display: swap; src: url("/fonts/poppins-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Poppins"; font-weight: 600; font-display: swap; src: url("/fonts/poppins-latin-600-normal.woff2") format("woff2"); }
+
+:root, [data-theme="light"] {
+  --aqua-100: #d9edee;
+  --aqua-200: #a2d6d5;
+  --aqua-300: #5fbfbc;
+  --aqua-400: #359492;
+  --turquesa: #36b9c7;
+  --amarillo: #ecc664;
+  --crema: #faf3e3;
+  --coral: #e94352;
+  --rosa: #f7bbbe;
+  --neutro-900: #44445a;
+  --neutro-500: #8d8daa;
+  --neutro-300: #c6c6d6;
+  --neutro-200: #dfdfe1;
+  --neutro-50: #f7f5f2;
+  --lila-400: #8b68a0;
+  --lila-300: #bd9bc9;
+  --lila-200: #d8c2e0;
+  --lila-100: #e6d5ea;
+
+  --surface: var(--neutro-50);
+  --surface-alt: var(--crema);
+  --surface-raised: #ffffff;
+  --line: var(--neutro-200);
+  --ink: var(--neutro-900);
+  --ink-muted: #66667f;
+  --brand: var(--aqua-300);
+  --brand-soft: var(--aqua-100);
+  --heading-accent: var(--lila-400);
+  --heading-accent-alt: var(--aqua-400);
+  --action: var(--aqua-200);
+  --focus-ring: var(--aqua-400);
+  --cat-ux: var(--aqua-200);
+  --cat-branding: var(--lila-200);
+  --cat-marketing: var(--neutro-300);
+  --cat-grafico: var(--amarillo);
+
+  --shadow-hover: 0 8px 24px rgba(68, 68, 90, 0.10);
+}
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+  --font-display: "Solway", Georgia, serif;
+  --font-sans: "Poppins", system-ui, sans-serif;
+}

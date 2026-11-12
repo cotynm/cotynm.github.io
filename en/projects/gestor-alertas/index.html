@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alert manager for a healthcare portal · Coty</title>
+<meta name="description" content="Self-service tool to manage medical alerts on clinic portals.">
+<meta name="author" content="Constanza N. M.">
+<link rel="canonical" href="https://cotynm.github.io/en/projects/gestor-alertas/">
+<link rel="alternate" hreflang="es" href="https://cotynm.github.io/proyectos/gestor-alertas/">
+<link rel="alternate" hreflang="en" href="https://cotynm.github.io/en/projects/gestor-alertas/">
+<link rel="alternate" hreflang="x-default" href="https://cotynm.github.io/proyectos/gestor-alertas/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Alert manager for a healthcare portal · Coty">
+<meta property="og:description" content="Self-service tool to manage medical alerts on clinic portals.">
+<meta property="og:url" content="https://cotynm.github.io/en/projects/gestor-alertas/">
+<meta property="og:image" content="https://cotynm.github.io/assets/d60cf958d9fe9255036a4a1165820f5c.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f7f5f2">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/poppins-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/solway-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+body{margin:0;background:#ffffff;font-family:"Poppins",system-ui,sans-serif;color:#44445a}
+a{color:#44445a}
+b,strong{font-weight:600}
+.wrap{max-width:1040px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+.narrow{max-width:none}
+.sep{border:0;margin:0 0 0 auto;width:66.666%;height:2px;border-radius:2px;background:var(--p-band)}
+.band{background:var(--p-band);color:var(--ink);text-align:center;padding:14px 16px;font:600 clamp(20px,2.2vw,26px)/1.2 var(--font-sans);letter-spacing:.04em;text-transform:uppercase;margin:0}
+.h2{margin:0;font:600 clamp(26px,2.8vw,30px)/1.25 var(--font-sans);color:var(--p-accent,var(--heading-accent-alt))}
+.h3{margin:0;font:700 20px/1.3 var(--font-display);color:var(--p-accent,var(--heading-accent-alt))}
+.p{margin:0;font-size:17px;line-height:27px}
+.list{margin:0;padding-left:20px;font-size:16px;line-height:25px;display:flex;flex-direction:column;gap:6px}
+.hl{margin:0 auto;max-width:720px;padding-top:24px;border-top:1px solid var(--aqua-300);text-align:center;font-size:19px;line-height:29px;color:var(--p-teal-text)}
+.tasks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:24px 16px;text-align:center}
+.tasks li{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:13px;line-height:18px;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+.tasks img{width:30px;height:30px}
+.chev{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px}
+.chev li{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start}
+.chev img{width:22px;height:22px;margin-top:2px}
+.chev b{display:block;font-size:17px;line-height:25px}
+.chev span{font-size:16px;line-height:25px}
+.shot{display:block;width:100%;height:auto;border-radius:var(--radius-md);background:var(--neutro-50)}
+.back{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:500;text-decoration:none;color:var(--ink)}
+.back:hover{text-decoration:underline;text-decoration-color:var(--brand);text-underline-offset:6px}
+.back img{width:20px;height:20px}
+.next{display:flex;flex-direction:column;gap:12px;text-decoration:none;color:var(--ink)}
+.next:hover .next-title{text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:2px;text-underline-offset:6px}
+.next-label{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted)}
+.next-title{font:600 22px/30px var(--font-sans);display:inline-flex;align-items:center;gap:10px}
+.foot a{color:var(--ink);text-decoration:none}
+.foot a:hover{text-decoration:underline;text-underline-offset:4px}
+.foot-icons a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;transition:background-color .2s ease}
+.foot-icons a:hover{background:var(--aqua-100)}
+.foot-icons img{width:22px;height:22px}
+.vd-grid{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:16px;align-items:start}
+.vd-col{display:flex;flex-direction:column;gap:16px}
+.to-top{position:fixed;right:24px;bottom:24px;z-index:20;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--surface-raised);display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow-hover);transition:transform .2s ease}
+.to-top:hover{transform:translateY(-2px)}
+.to-top img{width:22px;height:22px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:40px 56px;align-items:center}
+@media (max-width: 900px){.hero{grid-template-columns:1fr}}
+.product{background:linear-gradient(90deg,#b0c5c0,#849e96)}
+.product img{display:block;width:min(100%,1376px);height:auto;margin:0 auto;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
+.more{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;border-top:1px solid var(--aqua-300);border-bottom:1px solid var(--aqua-300)}
+.more-col{padding:24px 0}
+.more-right{align-items:flex-end;text-align:right}
+@media (max-width: 720px){.more{grid-template-columns:1fr}.more-col+.more-col{border-top:1px solid var(--aqua-300)}.more-right{align-items:flex-start;text-align:left}}
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:32px 48px;align-items:center}
+@media (max-width: 720px){.vd-grid{grid-template-columns:1fr 1fr}.vd-col{grid-column:1 / -1}}
+.full{display:block;width:100%;height:auto}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}
+.gal img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md)}
+.logos{display:flex;flex-direction:column;align-items:flex-start;gap:28px}
+.blk{padding:56px 0}
+.blk .p,.blk .list{color:inherit}
+.over{position:relative}
+.over img{display:block;width:100%;height:auto}
+.over-box{position:absolute;right:0;bottom:0;max-width:560px;padding:32px 36px;background:var(--lila-400);color:#fff;font-size:18px;line-height:28px}
+@media (max-width: 900px){.over-box{position:static;max-width:none}}
+.video{display:block;width:100%;height:auto;border-radius:var(--radius-md);background:#eef0f3;box-shadow:0 1px 3px rgba(68,68,90,.12)}
+.reply{margin:8px 0 0;font-size:16px;line-height:25px;color:var(--p-teal-text)}
+</style>
+</head>
+<body>
+<div style="--p-band: var(--amarillo); --p-accent: #8b68a0; --p-teal-text: #7a5690; min-height: 100vh; background: var(--surface-raised); color: var(--ink); font-family: var(--font-sans);">
+
+  <div style="position: sticky; top: 0px; z-index: 10; background: rgba(247, 245, 242, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);">
+    <div style="max-width: 1184px; margin: 0px auto;">
+      <div style="display: contents;"><header class="cy-nav"><a class="cy-nav-brand" href="/en/" aria-label="Coty, home"><img src="/assets/d956a0a1e15cbf5e112170773c9f7224.svg" alt=""></a><nav class="cy-nav-links" aria-label="Main"><a href="/en/" data-label="Projects" class="cy-nav-link">Projects</a><a href="/en/#sobre-mi" data-label="About me" class="cy-nav-link">About me</a><a href="/en/#contacto" data-label="Contact" class="cy-nav-link">Contact</a></nav><div class="cy-nav-right"><a class="cy-btn cy-btn-primary cy-nav-cta" href="/en/#contacto"><span>Shall we talk?</span></a><div class="cy-lang" role="group" aria-label="Language"><a href="/proyectos/gestor-alertas/" lang="es" class="cy-lang-opt">ES</a><a href="/en/projects/gestor-alertas/" lang="en" class="cy-lang-opt is-on" aria-current="true">EN</a></div><button type="button" class="cy-nav-burger" aria-expanded="false" aria-controls="cy-nav-panel" aria-label="Open menu"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 7L7 7M20 7L11 7"></path><path d="M20 17H17M4 17L13 17"></path><path d="M4 12H7L20 12"></path></svg></button></div><div id="cy-nav-panel" class="cy-nav-panel" hidden=""><nav aria-label="Main"><a href="/en/" data-label="Projects" class="cy-nav-panel-link">Projects</a><a href="/en/#sobre-mi" data-label="About me" class="cy-nav-panel-link">About me</a><a href="/en/#contacto" data-label="Contact" class="cy-nav-panel-link">Contact</a></nav><a class="cy-btn cy-btn-primary" href="/en/#contacto"><span>Shall we talk?</span></a></div></header></div>
+    </div>
+  </div>
+
+  <header style="background-color: var(--crema); background-image: linear-gradient(rgb(243, 234, 218) 1px, transparent 1px), linear-gradient(90deg, rgb(243, 234, 218) 1px, transparent 1px); background-size: 48px 48px; padding: 28px 0px 48px;">
+    <div class="wrap" style="max-width: 1184px; display: flex; flex-direction: column; gap: 24px;">
+      <a class="back" href="/en/"><img src="/assets/310dd7ece495d98919bf1c873b80829d.svg" alt="">Back to projects</a>
+      <div class="hero">
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <span style="display: flex;"><div style="display: contents;"><span class="cy-tag cy-tag-ux">UX/UI</span></div></span>
+          <h1 style="margin: 0px; font-family: var(--font-display); font-weight: 700; font-size: clamp(34px, 4vw, 48px); line-height: 1.1; color: var(--p-accent);">Alert manager for a healthcare portal</h1>
+          <p style="margin: 0px; font-size: clamp(17px, 1.6vw, 19px); line-height: 1.55;">Design of a self-service tool to manage medical alerts on a healthcare clinics' portal.</p>
+          <dl style="margin: 8px 0px 0px; display: flex; flex-wrap: wrap; gap: 12px 36px; font-size: 15px; line-height: 22px;">
+            <div><dt style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);">Role</dt><dd style="margin: 0px; font-weight: 500;">UX/UI lead</dd></div>
+            <div><dt style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);">CHILE</dt><dd style="margin: 0px; font-weight: 500;">2026</dd></div>
+            <div><dt style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);">Tools</dt><dd style="margin: 0px; font-weight: 500;">Figma Make · Figma Design</dd></div>
+          </dl>
+        </div>
+        <img src="/assets/d60cf958d9fe9255036a4a1165820f5c.jpg" alt="Laptop with the alert manager open" style="display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: var(--radius-lg);">
+      </div>
+    </div>
+  </header>
+
+  <h2 class="band">The project</h2>
+
+  <section class="wrap" style="padding: 56px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 44px;">
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <h3 class="h2">Context</h3>
+      <p class="p">Between 2024 and 2026 I worked on a <a href="/en/projects/portal-salud/" style="color: var(--p-accent); text-decoration: underline; text-underline-offset: 3px;">web portal project</a> for healthcare clinics. After the sites went live, the project moved on to a stage of improvements and iterations. This tool came from the need for <b>clinic staff to self-manage the different types of alerts</b> the system shows users on the website.</p>
+    </div>
+
+    <hr class="sep">
+
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <h3 class="h2">Goals</h3>
+      <ul class="list" style="font-size: 17px; line-height: 27px;">
+        <li>Apply visual design and define the user experience of an alert manager for healthcare clinic websites.</li>
+        <li>Optimize flows and add features so clinic staff can manage the different alerts according to the information they provide and where in the flow they appear.</li>
+      </ul>
+    </div>
+
+    <hr class="sep">
+
+    <div style="display: flex; flex-direction: column; gap: 32px;">
+      <h3 class="h2">Tasks and responsibilities</h3>
+      <ul class="tasks">
+        <li><img src="/assets/726bcfe2807b27b645a896d47567066d.svg" alt="">Architecture and<br>user flows</li>
+        <li><img src="/assets/5f5a4aab7c93f3188eeb3301978128d7.svg" alt="">UI design<br>Wireframes<br>Prototypes</li>
+        <li><img src="/assets/81d6af8425299997976ee947e6bc388a.svg" alt="">UX Writing</li>
+        <li><img src="/assets/940faa090d57687047b12ed410e9eccd.svg" alt="">Visual design<br>Deliverables</li>
+      </ul>
+      <div class="split" style="align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <p class="p">As UX/UI lead, together with the team I <b>gathered the clinics' needs</b> for displaying messages on the website and defined the best way to deliver them to users.</p>
+          <p class="p">To do this, we first <b>classified the different types of messages by priority, position in the flow and on screen, visual design and goal</b>.</p>
+        </div>
+        <img class="shot" src="/assets/52acbe60435ff5052df9e219a140a914.jpg" alt="Message and alert classification table" style="box-shadow: rgba(68, 68, 90, 0.15) 0px 1px 3px;">
+      </div>
+      <p class="p">We immediately saw the need for a tool to consolidate and manage all these messages. To build it quickly, we used AI at certain stages of the process and then adapted the design to the components and visual styles of the main project.</p>
+      <p class="p">At this stage my tasks included:</p>
+      <div class="split" style="align-items: start; gap: 8px 48px;">
+        <ul class="list">
+          <li>Gathering needs. Prioritizing and defining flows.</li>
+          <li>Writing the initial prompt for Figma Make.</li>
+          <li>Adjusting and adapting the design system and visual styles in Figma Design.</li>
+        </ul>
+        <ul class="list">
+          <li>Refining screens, flows and copy (UX writing).</li>
+          <li>Prototyping for client approval.</li>
+          <li>Presenting to development and delivering the handoff.</li>
+          <li>Pre-launch reviews.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <h2 class="band">The product</h2>
+  <div class="over">
+    <img src="/assets/8fc512620ddb6b3462dc87557e99ba22.jpg" alt="People using the alert manager on their laptops">
+    <p class="over-box" style="margin: 0px;">The result was a simple yet scalable tool where, in just a few screens and with a clear, intuitive and friendly interface, clinic staff can create alerts and publish them on the clinic's website.</p>
+  </div>
+
+  <section class="wrap" style="padding: 56px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 44px;">
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <h3 class="h2">Prototype</h3>
+      <p class="p">A walkthrough of the main flow: sign-in, alert list and creating a new alert.</p>
+      <video class="video" src="/assets/c1b1871a5493f217896258bfa845a9f1.mp4" poster="/assets/aa31509580bc33cbfb0cf1b28a4437e7.jpg" controls="" preload="metadata" playsinline="">Your browser can't play this video.</video>
+    </div>
+  </section>
+
+  <section class="blk" style="background: var(--ink); color: rgb(255, 255, 255);">
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 24px;">
+      <h3 style="margin: 0px; font: 600 clamp(26px, 2.8vw, 30px)/1.25 var(--font-sans);">Decisions and challenges</h3>
+      <p class="p">Even though it's a simple tool focused on a specific task, the experience was designed around these points:</p>
+      <ul class="chev">
+        <li><img src="/assets/a7aea1fe55f516fcaebe16907d950150.svg" alt=""><div><b>Safety for users</b><span>The tool makes decisive actions clear in advance, to keep the chance of errors to a minimum. It also lets users preview how the message will look on the site, on both desktop and mobile.</span></div></li>
+        <li><img src="/assets/a7aea1fe55f516fcaebe16907d950150.svg" alt=""><div><b>Making daily tasks easier</b><span>Besides useful behaviors like duplicating alerts, the manager lets users create alerts and just save them as drafts, or schedule them.</span></div></li>
+        <li><img src="/assets/a7aea1fe55f516fcaebe16907d950150.svg" alt=""><div><b>Coordinating teamwork</b><span>The interface supports searching alerts with filters, so users can view and make basic edits on the same results screen.</span></div></li>
+        <li><img src="/assets/a7aea1fe55f516fcaebe16907d950150.svg" alt=""><div><b>Room to scale</b><span>It's designed to accommodate the new types of messages or alerts that constantly come up in day-to-day work or in the healthcare context (for example, new regulations).</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding: 56px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 44px;">
+    <div class="split" style="align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <h3 class="h2">Scalability and technical debt</h3>
+        <p class="p">The tool was designed in a very short time, since backend development had already started and needed decisions right away.</p>
+        <p class="p">After delivering the assets and handoff for a first version, and even during the design process, I see room for improvement such as: <b>applying a brand identity</b> (still undefined by the business), <b>showing information about edits</b> (user, date, time), <b>adding an onboarding tour</b> for new users, <b>improving search</b> to filter by alert type, and more.</p>
+      </div>
+      <img class="shot" src="/assets/e08e355283962aa3f1e976ab9d42ae28.jpg" alt="Laptop with the alert list on a meeting table">
+    </div>
+  </section>
+
+  <h2 class="band">What did I learn?</h2>
+
+  <section class="wrap" style="padding: 48px clamp(16px, 4vw, 32px) 16px; display: flex; flex-direction: column; gap: 28px;">
+    <ul class="chev">
+        <li><img src="/assets/c45494a2f00c513880fe5bc5c4052561.svg" alt=""><div><b>Bringing AI into the workflow</b><span>I took the chance to explore working with Figma Make. While I can't fully delegate the work yet without customizing flows and screens by hand, it was very useful for defining the steps and components each screen needed.</span></div></li>
+        <li><img src="/assets/c45494a2f00c513880fe5bc5c4052561.svg" alt=""><div><b>Teamwork with clear requirements and good inputs</b><span>Both the development and business teams fully trusted my experience, which gave me the confidence to work with my own criteria and best practices.</span></div></li>
+        <li><img src="/assets/c45494a2f00c513880fe5bc5c4052561.svg" alt=""><div><b>Every product is just a beginning</b><span>Further proof that, with clear priorities and an eye on scalability, you can solve concrete needs in little time.</span></div></li>
+      </ul>
+  </section>
+
+  <section class="wrap" style="padding: 56px clamp(16px, 4vw, 32px) 72px; display: flex; flex-direction: column; gap: 28px;">
+    <div class="more">
+      <a class="next more-col" href="/en/#proyectos-ux">
+        <span class="next-label">Explore category</span>
+        <span class="next-title">More UX projects <img src="/assets/8a18d58b34c4387be95312a42466636d.svg" alt="" style="width: 22px; height: 22px;"></span>
+      </a>
+      <a class="next more-col more-right" href="/en/projects/bar-cafe/">
+        <span class="next-label">Next project</span>
+        <span class="next-title">Brand identity for a café <img src="/assets/8a18d58b34c4387be95312a42466636d.svg" alt="" style="width: 22px; height: 22px;"></span>
+      </a>
+    </div>
+    <a class="back" href="/en/"><img src="/assets/310dd7ece495d98919bf1c873b80829d.svg" alt="">Back to projects</a>
+  </section>
+
+  <footer class="foot" style="background: var(--aqua-200); color: var(--ink);">
+    <div style="max-width: 1120px; margin: 0px auto; padding: 32px clamp(16px, 4vw, 32px) 24px; display: flex; flex-direction: column; gap: 20px;">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px;">
+        <span style="font-family: var(--font-display); font-weight: 700; font-size: 20px;">Coty</span>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px;">
+          <a href="mailto:cotynm@gmail.com" style="font-size: 15px; font-weight: 500;">cotynm@gmail.com</a>
+          <div class="foot-icons" style="display: flex; gap: 4px;">
+            <a href="https://www.linkedin.com/in/constanzanm" aria-label="LinkedIn"><img src="/assets/190fe421f25d34bc8f4c02457bd58c04.svg" alt=""></a>
+            <a href="https://www.behance.net/constanzanm" aria-label="Behance"><img src="/assets/23c5b3eb15b65601343f2817498bef10.svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-top: 16px; border-top: 1px solid rgba(68, 68, 90, 0.2); font-size: 13px; line-height: 20px;">
+        <span>© 2026 Constanza N. M.</span>
+        <span>Icons: Solar Icons (CC BY 4.0) · Tool logos: SVG Logos (CC0)</span>
+      </div>
+    </div>
+  </footer>
+
+  
+    <button type="button" class="to-top" aria-label="Back to top"><img src="/assets/8c48b3587322b681e98733e2e281100f.svg" alt=""></button>
+  </div>
+<script src="/js/site.js" defer></script>
+</body>
+</html>

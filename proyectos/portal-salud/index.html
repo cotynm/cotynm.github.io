@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ecosistema de portales web para salud · Coty</title>
+<meta name="description" content="Rediseño integral del ecosistema web de clínicas de salud, centrado en el paciente.">
+<meta name="author" content="Constanza N. M.">
+<link rel="canonical" href="https://cotynm.github.io/proyectos/portal-salud/">
+<link rel="alternate" hreflang="es" href="https://cotynm.github.io/proyectos/portal-salud/">
+<link rel="alternate" hreflang="en" href="https://cotynm.github.io/en/projects/portal-salud/">
+<link rel="alternate" hreflang="x-default" href="https://cotynm.github.io/proyectos/portal-salud/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ecosistema de portales web para salud · Coty">
+<meta property="og:description" content="Rediseño integral del ecosistema web de clínicas de salud, centrado en el paciente.">
+<meta property="og:url" content="https://cotynm.github.io/proyectos/portal-salud/">
+<meta property="og:image" content="https://cotynm.github.io/assets/b1af998ae87d415e49908de40be20d5a.jpg">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f7f5f2">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/poppins-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/solway-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+body{margin:0;background:#ffffff;font-family:"Poppins",system-ui,sans-serif;color:#44445a}
+a{color:#44445a}
+b,strong{font-weight:600}
+.wrap{max-width:1040px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+.narrow{max-width:none}
+.sep{border:0;margin:0 0 0 auto;width:66.666%;height:2px;border-radius:2px;background:var(--p-band)}
+.band{background:var(--p-band);color:var(--ink);text-align:center;padding:14px 16px;font:600 clamp(20px,2.2vw,26px)/1.2 var(--font-sans);letter-spacing:.04em;text-transform:uppercase;margin:0}
+.h2{margin:0;font:600 clamp(26px,2.8vw,30px)/1.25 var(--font-sans);color:var(--heading-accent-alt)}
+.h3{margin:0;font:700 20px/1.3 var(--font-display);color:var(--heading-accent-alt)}
+.p{margin:0;font-size:17px;line-height:27px}
+.list{margin:0;padding-left:20px;font-size:16px;line-height:25px;display:flex;flex-direction:column;gap:6px}
+.hl{margin:0 auto;max-width:720px;padding-top:24px;border-top:1px solid var(--aqua-300);text-align:center;font-size:19px;line-height:29px;color:var(--p-teal-text)}
+.tasks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:24px 16px;text-align:center}
+.tasks li{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:13px;line-height:18px;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+.tasks img{width:30px;height:30px}
+.chev{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px}
+.chev li{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start}
+.chev img{width:22px;height:22px;margin-top:2px}
+.chev b{display:block;font-size:17px;line-height:25px}
+.chev span{font-size:16px;line-height:25px}
+.shot{display:block;width:100%;height:auto;border-radius:var(--radius-md);background:var(--neutro-50)}
+.back{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:500;text-decoration:none;color:var(--ink)}
+.back:hover{text-decoration:underline;text-decoration-color:var(--brand);text-underline-offset:6px}
+.back img{width:20px;height:20px}
+.next{display:flex;flex-direction:column;gap:12px;text-decoration:none;color:var(--ink)}
+.next:hover .next-title{text-decoration:underline;text-decoration-color:var(--brand);text-decoration-thickness:2px;text-underline-offset:6px}
+.next-label{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted)}
+.next-title{font:600 22px/30px var(--font-sans);display:inline-flex;align-items:center;gap:10px}
+.foot a{color:var(--ink);text-decoration:none}
+.foot a:hover{text-decoration:underline;text-underline-offset:4px}
+.foot-icons a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;transition:background-color .2s ease}
+.foot-icons a:hover{background:var(--aqua-100)}
+.foot-icons img{width:22px;height:22px}
+.vd-grid{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:16px;align-items:start}
+.vd-col{display:flex;flex-direction:column;gap:16px}
+.to-top{position:fixed;right:24px;bottom:24px;z-index:20;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--surface-raised);display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow-hover);transition:transform .2s ease}
+.to-top:hover{transform:translateY(-2px)}
+.to-top img{width:22px;height:22px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:40px 56px;align-items:center}
+@media (max-width: 900px){.hero{grid-template-columns:1fr}}
+.product{background:linear-gradient(90deg,#b0c5c0,#849e96)}
+.product img{display:block;width:min(100%,1376px);height:auto;margin:0 auto;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
+.more{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;border-top:1px solid var(--aqua-300);border-bottom:1px solid var(--aqua-300)}
+.more-col{padding:24px 0}
+.more-right{align-items:flex-end;text-align:right}
+@media (max-width: 720px){.more{grid-template-columns:1fr}.more-col+.more-col{border-top:1px solid var(--aqua-300)}.more-right{align-items:flex-start;text-align:left}}
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:32px 48px;align-items:center}
+@media (max-width: 720px){.vd-grid{grid-template-columns:1fr 1fr}.vd-col{grid-column:1 / -1}}
+</style>
+</head>
+<body>
+<div style="--p-band: var(--turquesa); --p-teal-text: #2b7c7a; min-height: 100vh; background: var(--surface-raised); color: var(--ink); font-family: var(--font-sans);">
+
+  <div style="position: sticky; top: 0px; z-index: 10; background: rgba(247, 245, 242, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);">
+    <div style="max-width: 1184px; margin: 0px auto;">
+      <div style="display: contents;"><header class="cy-nav"><a class="cy-nav-brand" href="/" aria-label="Coty, inicio"><img src="/assets/d956a0a1e15cbf5e112170773c9f7224.svg" alt=""></a><nav class="cy-nav-links" aria-label="Principal"><a href="/" data-label="Proyectos" class="cy-nav-link">Proyectos</a><a href="/#sobre-mi" data-label="Sobre mí" class="cy-nav-link">Sobre mí</a><a href="/#contacto" data-label="Contacto" class="cy-nav-link">Contacto</a></nav><div class="cy-nav-right"><a class="cy-btn cy-btn-primary cy-nav-cta" href="/#contacto"><span>¿Conversamos?</span></a><div class="cy-lang" role="group" aria-label="Idioma"><a href="/proyectos/portal-salud/" lang="es" class="cy-lang-opt is-on" aria-current="true">ES</a><a href="/en/projects/portal-salud/" lang="en" class="cy-lang-opt">EN</a></div><button type="button" class="cy-nav-burger" aria-expanded="false" aria-controls="cy-nav-panel" aria-label="Abrir menú"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 7L7 7M20 7L11 7"></path><path d="M20 17H17M4 17L13 17"></path><path d="M4 12H7L20 12"></path></svg></button></div><div id="cy-nav-panel" class="cy-nav-panel" hidden=""><nav aria-label="Principal"><a href="/" data-label="Proyectos" class="cy-nav-panel-link">Proyectos</a><a href="/#sobre-mi" data-label="Sobre mí" class="cy-nav-panel-link">Sobre mí</a><a href="/#contacto" data-label="Contacto" class="cy-nav-panel-link">Contacto</a></nav><a class="cy-btn cy-btn-primary" href="/#contacto"><span>¿Conversamos?</span></a></div></header></div>
+    </div>
+  </div>
+
+  <header style="background-color: var(--crema); background-image: linear-gradient(rgb(243, 234, 218) 1px, transparent 1px), linear-gradient(90deg, rgb(243, 234, 218) 1px, transparent 1px); background-size: 48px 48px; padding: 28px 0px 48px;">
+    <div class="wrap" style="max-width: 1184px; display: flex; flex-direction: column; gap: 24px;">
+      <a class="back" href="/"><img src="/assets/310dd7ece495d98919bf1c873b80829d.svg" alt="">Volver a proyectos</a>
+      <div class="hero">
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <span style="display: flex;"><div style="display: contents;"><span class="cy-tag cy-tag-ux">UX/UI</span></div></span>
+          <h1 style="margin: 0px; font-family: var(--font-display); font-weight: 700; font-size: clamp(34px, 4vw, 48px); line-height: 1.1; color: var(--heading-accent-alt);">Ecosistema de portales web para salud</h1>
+          <p style="margin: 0px; font-size: clamp(17px, 1.6vw, 19px); line-height: 1.55;">Rediseño integral del ecosistema web de clínicas de salud, creando una experiencia coherente, segura y centrada en el paciente.</p>
+          <dl style="margin: 8px 0px 0px; display: flex; flex-wrap: wrap; gap: 12px 36px; font-size: 15px; line-height: 22px;">
+            <div><dt style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);">Rol</dt><dd style="margin: 0px; font-weight: 500;">Líder del área UX</dd></div>
+            <div><dt style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);">CHILE</dt><dd style="margin: 0px; font-weight: 500;">2024 – 2026</dd></div>
+            <div><dt style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);">Alcance</dt><dd style="margin: 0px; font-weight: 500;">5 sitios unificados en un portal</dd></div>
+          </dl>
+        </div>
+        <img src="/assets/b1af998ae87d415e49908de40be20d5a.jpg" alt="Pantallas del portal de clínicas en distintos dispositivos" style="display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: var(--radius-lg);">
+      </div>
+    </div>
+  </header>
+
+  <h2 class="band">El proyecto</h2>
+
+  <section class="wrap" style="padding: 56px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 44px;">
+    <div class="narrow" style="display: flex; flex-direction: column; gap: 16px; margin: 0px;">
+      <h3 class="h2">Contexto</h3>
+      <p class="p">La firma posee un grupo de <b>clínicas de salud</b>, cada una con su propia web. Con los años, estos sitios crecieron incorporando funcionalidades según necesidades, lo que los hacía operativamente útiles, <b>pero poco consistentes en estructura, navegación y experiencia</b>.</p>
+      <p class="p">La información estaba desordenada, los flujos variaban entre clínicas y la reserva médica —proceso crítico— tenía fricciones. El desafío fue <b>ordenar, unificar y optimizar desde una perspectiva centrada en las personas usuarias sin perder funcionalidades clave para el negocio</b>.</p>
+    </div>
+
+    <hr class="sep">
+
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <h3 class="h2">Objetivos</h3>
+      <div class="split" style="align-items: start;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <h4 class="h3">UX</h4>
+          <ul class="list">
+            <li><b>Unificar patrones de navegación</b> entre clínicas.</li>
+            <li><b>Reducir fricción y carga cognitiva</b> simplificando los flujos.</li>
+            <li><b>Ordenar y jerarquizar</b> información clínica.</li>
+            <li><b>Optimizar para perfiles diversos</b>, incluyendo adultos mayores.</li>
+          </ul>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <h4 class="h3">UI</h4>
+          <ul class="list">
+            <li><b>Construir coherencia visual</b> entre clínicas respetando su identidad.</li>
+            <li><b>Crear guías</b> de estilo y una base de <b>componentes</b> reutilizables.</li>
+            <li><b>Establecer lineamientos escalables</b> para futuras funcionalidades.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="sep">
+
+    <div style="display: flex; flex-direction: column; gap: 32px;">
+      <h3 class="h2">Tareas y responsabilidades</h3>
+      <ul class="tasks">
+        <li><img src="/assets/506c2737b85ee1e86aba123644c45060.svg" alt="">Arquitectura y<br>flujos de usuario</li>
+        <li><img src="/assets/1860af99e6ea644a619711db7aac4a3e.svg" alt="">Diseño UI<br>Wireframes<br>Prototipos</li>
+        <li><img src="/assets/b6567490db4c01d89164b98f67ad8741.svg" alt="">UX Writing</li>
+        <li><img src="/assets/1249cddf1c2dcace9f51baf6b5334908.svg" alt="">Diseño visual<br>Entregables</li>
+        <li><img src="/assets/67746c5fab64cde0c0ad4b2dc4a9a7bf.svg" alt="">Control de<br>calidad (QA)</li>
+      </ul>
+      <p class="p">Como líder del área UX del proyecto, fui responsable de la experiencia end-to-end del portal:</p>
+      <div class="split" style="align-items: start; gap: 8px 48px;">
+        <ul class="list">
+          <li>Definición de arquitectura de información.</li>
+          <li>Diseño y optimización de flujos (especial foco en reserva médica).</li>
+          <li>Wireframes y prototipos.</li>
+          <li>Diseño UI en alta fidelidad.</li>
+        </ul>
+        <ul class="list">
+          <li>Desarrollo de design system (en evolución).</li>
+          <li>UX writing y microcopy.</li>
+          <li>QA funcional y revisión pre y post producción.</li>
+          <li>Iteraciones y mejoras continuas post-lanzamiento.</li>
+        </ul>
+      </div>
+      <p class="p">Trabajé para distintos <b>equipos: portal base, contenidos, célula de mejoras y QA</b>. Cada tarea fue coordinada con áreas de <b>desarrollo</b>, <b>seguridad legal</b>, <b>SEO</b> e <b>infraestructura</b>.</p>
+      <p class="p"><b>Lideré reuniones con stakeholders</b> para relevar necesidades, presentar soluciones de diseño y articular ajustes junto a otros equipos.</p>
+    </div>
+  </section>
+
+  <h2 class="band">El producto</h2>
+  <div class="product">
+    <img src="/assets/aecaaee5b3ed24c9a98bfc2bd220fa0b.jpg" alt="El portal de clínicas en monitor, notebook y tablets">
+  </div>
+
+  <section style="background: var(--lila-400); color: rgb(255, 255, 255); padding: 48px 0px;">
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 28px;">
+      <h3 style="margin: 0px; font: 600 clamp(26px, 2.8vw, 30px)/1.25 var(--font-sans);">Características y funcionalidades</h3>
+      <div class="split" style="align-items: start;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <h4 style="margin: 0px; font: 700 20px/1.3 var(--font-display);">¿Qué necesitan resolver las personas usuarias?</h4>
+          <ul class="list">
+            <li>Concretar la reserva de una hora médica.</li>
+            <li>Acceder a su portal privado para gestionar sus exámenes, horas médicas, cuenta, etc.</li>
+            <li>Conocer información de la clínica y encontrar información de salud en general.</li>
+          </ul>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <h4 style="margin: 0px; font: 700 20px/1.3 var(--font-display);">¿Qué necesita el negocio?</h4>
+          <ul class="list">
+            <li>Ofrecer una plataforma al paciente donde pueda hacer trámites, conocer su historial y gestionar información privada a fin de minimizar las consultas off-line.</li>
+            <li>Contar con un espacio institucional donde concentrar información, comunicar su expertise y posicionarse en el ámbito de la salud.</li>
+            <li>Promocionar productos y beneficios.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding: 56px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 44px;">
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div class="narrow" style="display: flex; flex-direction: column; gap: 16px; margin: 0px;">
+        <h3 class="h2">Visual design</h3>
+        <p class="p">Comencé a trabajar con flujos y algunos wireframes en alta definición, por lo cual tuve que crear las pantallas para los flujos completos, los componentes y definir las guías de estilo para todo el proyecto.</p>
+      </div>
+      <div class="vd-grid">
+        <img class="shot" src="/assets/4ef9b9b889850a8cdc47f7bf8da3c70e.jpg" alt="Paleta de colores y estilos tipográficos del portal">
+        <img class="shot" src="/assets/a77a711d1db8c85d6c906ca9d03ca520.jpg" alt="Flujos de reserva organizados en Figma">
+        <div class="vd-col">
+          <img class="shot" src="/assets/eaa07f98543004369b0c11abe5ebe11a.jpg" alt="Componentes: botones y estados por color">
+          <img class="shot" src="/assets/d0f9cbee2a42636ca6d8493c35740108.jpg" alt="Pantallas de reserva y calendario">
+        </div>
+      </div>
+    </div>
+
+    <hr class="sep">
+
+    <div style="display: flex; flex-direction: column; gap: 32px;">
+      <div class="split">
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <h3 class="h2">Entrega de servicios y handoff</h3>
+          <p class="p">Las soluciones estuvieron constantemente condicionadas por cómo los servicios entregan la información.</p>
+          <p class="p">Por ello, antes de trabajar cualquier diseño relevé el input de los datos y consulté sobre cualquier limitación que pudiera existir.</p>
+        </div>
+        <img class="shot" src="/assets/d67c5f8d0561e018e95970e6ae4b45de.jpg" alt="Notebook con la documentación de handoff">
+      </div>
+      <p class="hl">A su vez, resultó fundamental un <b>traspaso hacia desarrollo prolijo, coordinado y exhaustivo</b>, a fin de que el resultado sea lo más fiel posible a la propuesta aprobada por el negocio.</p>
+    </div>
+  </section>
+
+  <section style="background: rgb(43, 124, 122); color: rgb(255, 255, 255); padding: 48px 0px;">
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 24px;">
+      <h3 style="margin: 0px; font: 600 clamp(26px, 2.8vw, 30px)/1.25 var(--font-sans);">Desafíos</h3>
+      <p class="p">¡Fueron muchos! No obstante, podría definir como los más interesantes:</p>
+      <ul class="chev">
+        <li><img src="/assets/a7aea1fe55f516fcaebe16907d950150.svg" alt=""><div><b>Seguridad, datos sensibles y cumplimiento de normativas</b><span>Cada decisión debe contemplar estándares de seguridad. Los despliegues pasan por auditorías externas y controles estrictos antes de cada paso a producción. Además, se trabaja constantemente con las áreas legales de las clínicas.</span></div></li>
+        <li><img src="/assets/a7aea1fe55f516fcaebe16907d950150.svg" alt=""><div><b>Trabajo con múltiples stakeholders</b><span>Congeniar prioridades, educar en criterios UX, negociar decisiones y alinear expectativas fue una parte central del proyecto. Así y todo, disfruté mucho las presentaciones al negocio, donde defendí las decisiones tomadas y receptamos feedback.</span></div></li>
+        <li><img src="/assets/a7aea1fe55f516fcaebe16907d950150.svg" alt=""><div><b>No perder funcionalidades existentes</b><span>Muchas herramientas internas eran valiosas, aunque no estuvieran optimizadas en UX. El desafío fue replantearlas de acuerdo a los recursos actuales disponibles, y lograr una propuesta superadora que sea aceptada por el personal usuario de la clínica, ya acostumbrado a su uso.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding: 56px clamp(16px, 4vw, 32px); display: flex; flex-direction: column; gap: 24px;">
+    <h3 class="h2">Resultados</h3>
+    <p class="p">Con un trabajo conjunto entre las áreas de diseño, desarrollo, seguridad y QA se logró construir una herramienta potente y versátil para el negocio, y una plataforma útil y completa para los pacientes de cada clínica.</p>
+    <ul class="list">
+      <li>Experiencia homogénea entre clínicas.</li>
+      <li>Navegación más clara y estructurada.</li>
+      <li>Flujo de reserva más simple y claro.</li>
+      <li>Secciones autoadministrables para una actualización dinámica.</li>
+      <li>Mayor percepción de profesionalismo y solidez de marca.</li>
+      <li>Base escalable para incorporación de nuevas funcionalidades.</li>
+    </ul>
+    <p class="hl" style="margin-top: 8px;">Desde los primeros días de implementación de cada sitio, se produjo un <b>incremento en reservas médicas</b> según análisis de datos, feedback interno y percepción operativa.</p>
+  </section>
+
+  <h2 class="band">¿Qué aprendizajes me llevo?</h2>
+
+  <section class="wrap" style="padding: 48px clamp(16px, 4vw, 32px) 64px; display: flex; flex-direction: column; gap: 28px;">
+    <p class="p">Además de las enseñanzas propias de involucrarme en un proyecto de salud, podría mencionar:</p>
+    <ul class="chev">
+      <li><img src="/assets/c45494a2f00c513880fe5bc5c4052561.svg" alt=""><div><b>Construir buenas relaciones para el día a día</b><span>Trabajar en equipo no solo implica a los equipos internos de la empresa. Los stakeholders tienen mucho conocimiento y valor que aportar y es fundamental construir una relación sana y colaborativa en pos del proyecto.</span></div></li>
+      <li><img src="/assets/c45494a2f00c513880fe5bc5c4052561.svg" alt=""><div><b>Sacar algo bueno de las batallas perdidas</b><span>Muchas veces, aunque nos pese, los intereses de negocio prevalecen ante las necesidades de las personas usuarias. Sin embargo, (casi) siempre hay algo que podemos hacer para mitigar un poco el impacto: un atajo, un microcopy, una ayuda o un recurso sutil de diseño.</span></div></li>
+      <li><img src="/assets/c45494a2f00c513880fe5bc5c4052561.svg" alt=""><div><b>Aprender a soltar</b><span>Aprendí a dejar de lado diseños que habían cerrado perfecto en pos de iteraciones pedidas por el cliente. Si la propuesta es superadora, cuesta menos.</span></div></li>
+    </ul>
+  </section>
+
+  <section class="wrap" style="padding: 0px clamp(16px, 4vw, 32px) 72px; display: flex; flex-direction: column; gap: 28px;">
+    <div class="more">
+      <a class="next more-col" href="/#proyectos-ux">
+        <span class="next-label">Explorar categoría</span>
+        <span class="next-title">Más proyectos de UX <img src="/assets/8a18d58b34c4387be95312a42466636d.svg" alt="" style="width: 22px; height: 22px;"></span>
+      </a>
+      <a class="next more-col more-right" href="/proyectos/diplomatura/">
+        <span class="next-label">Siguiente proyecto</span>
+        <span class="next-title">Identidad de marca para diplomatura <img src="/assets/8a18d58b34c4387be95312a42466636d.svg" alt="" style="width: 22px; height: 22px;"></span>
+      </a>
+    </div>
+    <a class="back" href="/"><img src="/assets/310dd7ece495d98919bf1c873b80829d.svg" alt="">Volver a proyectos</a>
+  </section>
+
+  <footer class="foot" style="background: var(--aqua-200); color: var(--ink);">
+    <div style="max-width: 1120px; margin: 0px auto; padding: 32px clamp(16px, 4vw, 32px) 24px; display: flex; flex-direction: column; gap: 20px;">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px;">
+        <span style="font-family: var(--font-display); font-weight: 700; font-size: 20px;">Coty</span>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px;">
+          <a href="mailto:cotynm@gmail.com" style="font-size: 15px; font-weight: 500;">cotynm@gmail.com</a>
+          <div class="foot-icons" style="display: flex; gap: 4px;">
+            <a href="https://www.linkedin.com/in/constanzanm" aria-label="LinkedIn"><img src="/assets/190fe421f25d34bc8f4c02457bd58c04.svg" alt=""></a>
+            <a href="https://www.behance.net/constanzanm" aria-label="Behance"><img src="/assets/23c5b3eb15b65601343f2817498bef10.svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-top: 16px; border-top: 1px solid rgba(68, 68, 90, 0.2); font-size: 13px; line-height: 20px;">
+        <span>© 2026 Constanza N. M.</span>
+        <span>Íconos: Solar Icons (CC BY 4.0) · Logos de herramientas: SVG Logos (CC0)</span>
+      </div>
+    </div>
+  </footer>
+
+  
+    <button type="button" class="to-top" aria-label="Volver arriba"><img src="/assets/8c48b3587322b681e98733e2e281100f.svg" alt=""></button>
+  </div>
+<script src="/js/site.js" defer></script>
+</body>
+</html>
