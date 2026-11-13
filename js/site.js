@@ -56,10 +56,10 @@
   var more = section.querySelector('.js-more');
   var LIMIT = 6;
   var state = { filter: 'todos', expanded: false };
-  function catOf(card) { var m = card.className.match(/cy-card-(ux|branding|marketing|grafico)/); return m ? m[1] : ''; }
+  function catsOf(card) { var d = card.getAttribute('data-cats'); if (d) return d.split(' '); var m = card.className.match(/cy-card-(ux|branding|marketing|grafico)/); return m ? [m[1]] : []; }
   function keyOf(chip) { var m = chip.className.match(/cy-chip-h-(\w+)/); return m ? m[1] : 'todos'; }
   function render() {
-    var list = cards.filter(function (c) { return state.filter === 'todos' || catOf(c) === state.filter; });
+    var list = cards.filter(function (c) { return state.filter === 'todos' || catsOf(c).indexOf(state.filter) >= 0; });
     cards.forEach(function (c) { c.hidden = true; });
     list.forEach(function (c, i) { c.hidden = !state.expanded && i >= LIMIT; });
     chips.forEach(function (chip) {
